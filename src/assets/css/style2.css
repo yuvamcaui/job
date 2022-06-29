@@ -1,0 +1,50 @@
+.select_box {
+    position: relative;
+	width:100%;
+    margin-left: 0px !important;
+	float:left;
+}
+.select_box .nice-select {
+    font-size: 16px;
+    width: 100%;
+    height: 35px;
+    color: #555;
+    background: #fff;
+    font-size: 16px;
+    padding-left: 30px;
+    margin-bottom: 25px;
+    text-transform: capitalize;
+    line-height: 30px;
+	-webkit-border-radius: 0; 
+  -moz-border-radius: 0; 
+   border-radius: 0; 
+    border: 2px solid #f0f0f0;
+	position:relative;
+}
+.select_box .nice-select.open .list{
+	width:100%;
+}
+.select_box .nice-select .current {
+    position: absolute;
+    left: 25px;
+    color: #797979;
+}
+.select_box .nice-select:after {
+    border-bottom: 2px solid #8b90a1;
+    border-right: 2px solid #8b90a1;
+    content: '';
+    display: block;
+    height: 8px;
+    margin-top: -4px;
+    pointer-events: none;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    width: 8px;
+}
+.contect_form3 label, .select_box label{
+	text-transform:capitalize;
+	font-size:16px;
+	padding-bottom:4px;
+	color:#222;
+}
