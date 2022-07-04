@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 const Slider1 = require("../../../assets/images/Slider/slide1.png");
 const Slider2 = require("../../../assets/images/Slider/slide2.png");
 
-const AppliedJob = () =>{
+const AppliedJob = () =>{  
 
     return(<>        
                     <div class="row">                        

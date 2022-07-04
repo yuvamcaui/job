@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { useReactMediaRecorder } from "react-media-recorder";
 import { useDispatch,useSelector } from 'react-redux';
@@ -14,9 +15,11 @@ const mic = require("../../../assets/images/icon/mic.png")
 
 const Profile = () =>{
 
-    const dispatch = useDispatch()
+    const dispatch           = useDispatch()
 
     const el                 = useRef();  
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     const selector = useSelector(state=>state.BindReducer)
 
@@ -32,12 +35,10 @@ const Profile = () =>{
 
     const [gender,setGender] = useState([])   
 
-    const [file, setFile] = useState(''); 
+    const [file, setFile] = useState('');     
 
     const handleChange  = (e)=>{
-
         const file = e.target.files[0]; // accesing file
-
         setFile(file);      
     }   
 
@@ -64,56 +65,34 @@ const Profile = () =>{
 
     const onChange = e =>setFormData({ ...formData,[e.target.name] : e.target.value });
 
-    const onSubmit= async e =>{
-        e.preventDefault();    
-        
-        // let body   = new FormData();
-
-        // body.append('_id',localData._id)
-        // body.append('memberType',1)
-        // body.append('name',name)
-        // body.append('mobileNo',mobileNo)
-        // body.append('email ',email)
-        // body.append('doB ',doB)
-        // body.append('genderId ',genderId)
-        // body.append('aadharNo',aadharNo)
-        // body.append('countryId',countryId)
-        // body.append('stateId ',stateId)
-        // body.append('cityId',cityId)
-        // body.append('address',address)
-        // body.append('pinCode ',pinCode)
-        // body.append('skillCategory',skillCategory ? skillCategory : "")
-        // body.append('audioPath',file)
-        // body.append('names','karthi')
-
+    const onSubmit = data => {                
+        let body   = new FormData();         
+        body.append('_id', localData._id)
+        body.append('memberType', 1)
+        body.append('name', name)
+        body.append('mobileNo', mobileNo)
+        body.append('email ', email)
+        body.append('doB ', doB)
+        body.append('genderId ', genderId)
+        body.append('aadharNo', aadharNo)
+        body.append('countryId', countryId)
+        body.append('stateId ', stateId)
+        body.append('cityId', cityId)
+        body.append('address', address)
+        body.append('pinCode ', pinCode)
+        body.append('skillCategory', skillCategory ? skillCategory : "")
+        body.append('audioPath', file)
+       
         // const token = getTokenLocalStorage();
 
-        // console.log(JSON.stringify(body))
-    
-        // const headers = {"x-auth-header" : `${token}`, 'content-type': 'multipart/form-data'}
+        // for (var pair of body.entries()) {
+        //     console.log(pair[0]+ ', ' + pair[1]); 
+        // }
 
-        // console.log(`Headers - ${ JSON.stringify(headers) }`)
-    
-          
-    //     axios.put(`${Url}member`,body,headers).then((response)=>{
-    //         console.log(JSON.stringify(response.data))
-    //         if(response.data){                 
-    //             userLoginData(response?.data?.data)
-    //         }
-    //         // dispatch({
-    //         //     payload : response,
-    //         //     type : EMPLOYE_PROFILE_UPDATE
-    //         // })
-    //     }).catch((err)=>{
-    //         // dispatch({
-    //         //     payload : err,
-    //         //     type : EMPLOYE_PROFILE_UPDATE_FAIL
-    //         // })
-    //     }) 
+        dispatch(EmployeeProfileUpdate(body));    
+    }
 
-     dispatch(EmployeeProfileUpdate(formData));    
-
-    };   
+   
 
     useEffect(()=>{
 
@@ -132,7 +111,7 @@ const Profile = () =>{
 
     return(<>
             <div className="col-lg-12 col-md-12 col-sm-12 col-12">
-                <form className="form"  enctype="multipart/form-data" onSubmit={ e=>onSubmit(e) }>
+                <form className="form"  enctype="multipart/form-data" onSubmit={handleSubmit(onSubmit)} >
                             <div className="job_listing_left_fullwidth jb_cover">
                                 <div className="row">
                                     <div className="col-lg-6 col-md-6 col-sm-12 col-12">
@@ -141,8 +120,8 @@ const Profile = () =>{
                                         </div>
                                         <div className="jp_job_post_right_cont edit_profile_wrapper">
                                             <h4>Profile Picture</h4>
-                                            <div className="width_50">
-                                                <input type="file" id="input-file-now-custom-233" className="dropify" data-height="90" />
+                                            <div className="width_50">                                               
+                                                <input type="file" ref={el} onChange={ handleChange } className="dropify" data-height="90" />
                                             </div>
                                         </div>
                                     </div>
@@ -155,6 +134,7 @@ const Profile = () =>{
                                             <h4>Audio Resume</h4>
                                             <div className="width_50">
                                                 <input type="file" ref={el} onChange={ handleChange } className="dropify" data-height="90" />
+                                                {/* <input type="file" ref={el} onChange={ handleChange } className="dropify" data-height="90" /> */}
                                             </div>
                                         </div>
                                     </div>
@@ -166,21 +146,21 @@ const Profile = () =>{
 
                                 <div className="row">
                                     <div className="col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <div className="contect_form3">
-                                            <label>Name</label>
-                                            <input type="text" name="name" id="name" value={name} onChange={ e=>onChange(e) }  />
+                                        <div className="contect_form3">                                           
+                                            {  errors?.name ? <label class="control-label error-alert" for="inputError">Please Fill Valid Name</label>  :  <label>Name</label> }
+                                            <input type="text" name="name" id="name"   {...register("name", { required: true, minLength: 3, maxLength: 40,})} value={name} onChange={ e=>onChange(e) }  />
+                                        </div>
+                                    </div>
+                                    <div className="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <div className="contect_form3">                                           
+                                            {  errors?.mobileNo ? <label class="control-label error-alert" for="inputError">Please Fill Valid Mobile No </label>  :   <label>Mobile No</label> }
+                                            <input type="text" name='mobileNo' id='mobileNo' {...register("mobileNo", {required: true, minLength: 10, maxLength: 10,})} value={ mobileNo } onChange={ e =>onChange(e) } />
                                         </div>
                                     </div>
                                     <div className="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div className="contect_form3">
-                                            <label>Mobile No</label>
-                                            <input type="text" name='mobileNo'  value={ mobileNo } onChange={ e =>onChange(e) } />
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <div className="contect_form3">
-                                            <label>Email </label>
-                                            <input type="email" name='email' id="email"   value={ email } onChange={ e =>onChange(e) } />
+                                        {  errors?.email ? <label class="control-label error-alert" for="inputError">Please Fill Valid Email</label> : <label>Email </label> } 
+                                            <input type="email" name='email' id="email" {...register("email", {required: true, pattern: /^\S+@\S+$/i})}  value={ email } onChange={ e =>onChange(e) } />
                                         </div>
                                     </div>
                                     <div className="col-lg-6 col-md-6 col-sm-12 col-12">
@@ -205,53 +185,10 @@ const Profile = () =>{
                                     </div>
                                     <div className="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div className="contect_form3">
-                                            <label>Aadhar No </label>
-                                            <input type="text" name="aadharNo" id="aadharNo" value={ aadharNo } onChange={ e =>onChange(e) } aria-describedby="Aadhar No" />
+                                        {  errors?.aadharNo ? <label class="control-label error-alert" for="inputError">Please Fill Valid Aadhar No</label> : <label>Aadhar No </label> }   
+                                            <input type="text" name="aadharNo" id="aadharNo" {...register("aadharNo", {required: true, minLength: 12, maxLength: 12,})} value={ aadharNo } onChange={ e =>onChange(e) } aria-describedby="Aadhar No" />
                                         </div>
                                     </div>
-                                    {/* <div className="col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <div className="contect_form3">
-                                            <label>Address</label>
-                                            <input type="text" name="address" />
-                                        </div>
-                                    </div> */}
-
-                                    {/* <div className="col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <div className="select_box">
-                                            <label>Educational Qualification</label>
-                                            <select>
-                                                <option>UG</option>
-                                                <option>PG</option>
-                                                <option>Diplomo</option>
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <div className="contect_form3">
-                                            <label>Degree</label>
-                                            <input type="text" name="address" />
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <div className="select_box">
-                                            <label>skills</label>
-                                            <select multiple>
-                                                <option>Marketing</option>
-                                                <option>Nursing</option>
-                                                <option>Driving</option>
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <div className="contect_form3">
-                                            <label>Experience</label>
-                                            <input type="text" name="address" />
-                                        </div>
-                                    </div> */}
-                                  
-                                  
                                 </div>
 
                             </div>
@@ -318,51 +255,14 @@ const Profile = () =>{
                                                             <textarea cols={40} rows={5} name='address' id="address" value={ address } onChange={ e =>onChange(e) }></textarea>
                                                         </div>
                                                     </div>
-                                                
-
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-							{/* <div className="browse jb_cover">
-                             <div className="row">
-                                <div className="col-lg-12 col-md-12 col-sm-12 col-12">
-                                    <div className="job_filter_category_sidebar jb_cover">
-                                        <div className="job_filter_sidebar_heading jb_cover">
-                                            <h1> password & security</h1>
-                                        </div>
-                                        <div className="job_overview_header jb_cover">
-                                            <div className="row">
-                                           
-                                                <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-                                                    <div className="contect_form3">
-                                                        <label>current pasword</label>
-                                                        <input type="password" name="password" />
-                                                    </div>
-                                                </div>
-                                                <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-                                                    <div className="contect_form3">
-                                                        <label>new pasword</label>
-                                                        <input type="password" name="password" />
-                                                    </div>
-                                                </div>
-                                                <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-                                                    <div className="contect_form3">
-                                                        <label> repeat new pasword</label>
-                                                        <input type="password" name="password" />
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> */}
+                            </div>							
                             <div className="row">
                                 <div className="col-lg-12 col-md-12 col-sm-12 col-12">
-                                    <div className="login_remember_box jb_cover">
-                                      
+                                    <div className="login_remember_box jb_cover">                                      
                                         <div className="header_btn search_btn jb_cover">
                                         <button type="submit" class="btn btn-primary">Update</button>
                                         </div>

@@ -1,4 +1,5 @@
 import React,{useState}  from "react";
+import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { EmployerSignIn } from '../../store/action/LoginAction';
@@ -13,6 +14,8 @@ const EmployerSignIns = () =>{
     const history = useNavigate()
 
     const dispatch = useDispatch()
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     const selector = useSelector(state => state.LoginReducer);   
 
@@ -29,11 +32,12 @@ const EmployerSignIns = () =>{
 
     const onChange = e =>setFormData({ ...formData,[e.target.name] : e.target.value });
 
-    const onSubmit= async e =>{
-        e.preventDefault();       
+    const onSubmit = data => {        
+
         dispatch(EmployerSignIn(name, companyName, email, mobileNo, password, history));    
-    };   
-    return(<>
+    };
+  
+return(<>
    <Header2 />
     <div class="page_title_section">
         <div class="page_header">
@@ -78,25 +82,30 @@ const EmployerSignIns = () =>{
                         </div>
                         <div class="login_form_wrapper signup_wrapper">
                             <h2>Emploer Sign Up</h2>
-                            <form className="form" onSubmit={ e=>onSubmit(e) }>
-                            <div class="form-group icon_form comments_form">
-                                    <input type="text" class="form-control require" name="name" id="name" value={name} onChange={ e=>onChange(e) } placeholder="Name*" />
+                            <form className="form" onSubmit={handleSubmit(onSubmit)} >
+                                {  errors?.name && <label class="control-label error-alert" for="inputError">Please Fill Valid Name</label> }
+                                <div class="form-group icon_form comments_form">
+                                    <input type="text" class="form-control require" name="name" id="name" {...register("name", {required: true, minLength: 3, maxLength: 40,})} value={name} onChange={ e=>onChange(e) } placeholder="Name*" />
                                     <i class="fas fa-user"></i>
                                 </div>
+                                {  errors?.companyName && <label class="control-label error-alert" for="inputError">Please Fill Valid Company Name</label> }
                                 <div class="form-group icon_form comments_form">
-                                    <input type="text" class="form-control require" name="companyName" id="companyName" value={companyName} onChange={ e=>onChange(e) } placeholder="Company Name*" />
+                                    <input type="text" class="form-control require" name="companyName" id="companyName" {...register("companyName", {required: true, minLength: 3, maxLength: 40,})} value={companyName} onChange={ e=>onChange(e) } placeholder="Company Name*" />
                                     <i class="fas fa-user"></i>
                                 </div>
+                                {  errors?.email && <label class="control-label error-alert" for="inputError">Please Fill Valid Email</label> }
                                 <div class="form-group icon_form comments_form">
-                                    <input type="text" class="form-control require" name="email" id="email" value={email} onChange={ e=>onChange(e) } placeholder="Email Address*" />
+                                    <input type="text" class="form-control require" name="email" id="email"  {...register("email", {required: true, pattern: /^\S+@\S+$/i})} value={email} onChange={ e=>onChange(e) } placeholder="Email Address*" />
                                     <i class="fas fa-envelope"></i>
                                 </div>
+                                {  errors?.mobileNo && <label class="control-label error-alert" for="inputError">Please Fill Valid Mobile No</label> }
                                 <div class="form-group icon_form comments_form">
-                                    <input type="text" class="form-control require" name="mobileNo" id="mobileNo" value={mobileNo} onChange={ e=>onChange(e) } placeholder="Mobile No*" />
+                                    <input type="text" class="form-control require" name="mobileNo" id="mobileNo"  {...register("mobileNo", {required: true, minLength: 10, maxLength: 10,})} value={mobileNo} onChange={ e=>onChange(e) } placeholder="Mobile No*" />
                                     <i class="fas fa-envelope"></i>
                                 </div>
+                                {  errors?.password && <label class="control-label error-alert" for="inputError">Please Fill Valid Password</label> }
                                 <div class="form-group icon_form comments_form">
-                                    <input type="password" class="form-control require" name="password" id="password" value={password} onChange={ e=>onChange(e) } placeholder="Password *" />
+                                    <input type="password" class="form-control require" name="password" id="password" {...register("password", {required: true, minLength: 6 })} value={password} onChange={ e=>onChange(e) } placeholder="Password *" />
                                     <i class="fas fa-lock"></i>
                                 </div>
                                 <div class="login_remember_box">

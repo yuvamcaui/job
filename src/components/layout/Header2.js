@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getTokenLocalStorage, getTokenLocalUserStorage } from '../../utils/Common';
+import PersonIcon from '@mui/icons-material/Person';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import LockIcon from '@mui/icons-material/Lock';
+import LogoutIcon from '@mui/icons-material/Logout';
 const logo = require("../../assets/images/logo.png");
 const logo2 = require("../../assets/images/logo2.png");
 const profile = require("../../assets/images/icon/profile.png")
@@ -8,10 +13,7 @@ const Header2 =() =>{
 
     const [header,setHeader] = useState(getTokenLocalStorage());
 
-    const [ loginType,setLoginType ] = useState(getTokenLocalUserStorage())
-
-    console.log(loginType)
-    console.log(loginType?.memberType)
+    const [ loginType,setLoginType ] = useState(getTokenLocalUserStorage()) 
 
     return(<>
         <nav className="cd-dropdown cd_dropdown_index2 cd_dropdown_index3 d-block d-sm-block d-md-block d-lg-none d-xl-none">
@@ -59,8 +61,7 @@ const Header2 =() =>{
                                     <div className="extra-cell">
                                         <button id="quik-search-btn" type="button" className="site-button radius-xl"><i className="fas fa-search"></i></button>
                                     </div>
-                                </div>
-                            
+                                </div>                            
                                 <div className="dez-quik-search bg-primary-dark">
                                     <form action="#">
                                         <input name="search" value="" type="text" className="form-control" placeholder="Type to search..." />
@@ -88,19 +89,19 @@ const Header2 =() =>{
                             {
                                 loginType?.memberType === 1 ? (<ul className="navi_2_dropdown">                               
                              
-                                                                <li className="parent"><Link to={"/employe-dashboard"}><i className="far fa-calendar-alt"></i>Profile</Link></li>
-                                                                <li className="parent"><Link to={"/employe-profile"}><i className="fas fa-comment"></i>Notifications</Link></li>                                            
-                                                                <li className="parent"><Link to={"/employe-profile"}><i className="fas fa-question-circle"></i>Help</Link></li>
-                                                                <li className="parent"><Link to={"/employe-profile"}><i className="fas fa-lock"></i>Lock Screen</Link></li>
-                                                                <li className="parent"><Link to={"/logOut"}><i className="fas fa-sign-in-alt"></i>logout</Link></li>
+                                                                <li className="parent"><Link to={"/employe-dashboard"}><PersonIcon size={30} style={{fill: "#ff3366"}} />Profile</Link></li>
+                                                                <li className="parent"><Link to={"/employe-profile"}><NotificationsNoneIcon size={30} style={{fill: "#ff3366"}} />Notifications</Link></li>                                            
+                                                                <li className="parent"><Link to={"/employe-profile"}><HelpOutlineIcon size={30} style={{fill: "#ff3366"}} />Help</Link></li>
+                                                                <li className="parent"><Link to={"/employe-profile"}><LockIcon size={30} style={{fill: "#ff3366"}}  />Lock Screen</Link></li>
+                                                                <li className="parent"><Link to={"/logOut"}><LogoutIcon size={30} style={{fill: "#ff3366"}} />logout</Link></li>
                                                              </ul>) : 
                                                              (<ul className="navi_2_dropdown">  
-                                                                <li className="parent"><Link to={"/employer-dashboard"}><i className="far fa-calendar-alt"></i>Profile</Link></li>
-                                                                <li className="parent"><Link to={"/employe-profile"}><i className="fas fa-comment"></i>Notifications</Link></li>                                            
-                                                                <li className="parent"><Link to={"/employe-profile"}><i className="fas fa-question-circle"></i>Help</Link></li>
-                                                                <li className="parent"><Link to={"/employe-profile"}><i className="fas fa-lock"></i>Lock Screen</Link></li>
-                                                                <li className="parent"><Link to={"/logOut"}><i className="fas fa-sign-in-alt"></i>logout</Link></li>
-                                                             </ul>)
+                                                                <li className="parent"><Link to={"/employer-dashboard"}><PersonIcon size={30} style={{fill: "#ff3366"}} />Profile</Link></li>
+                                                                <li className="parent"><Link to={"/employe-profile"}><NotificationsNoneIcon  size={30} style={{fill: "#ff3366"}} />Notifications</Link></li>                                            
+                                                                <li className="parent"><Link to={"/employe-profile"}><HelpOutlineIcon size={30} style={{fill: "#ff3366"}} />Help</Link></li>
+                                                                <li className="parent"><Link to={"/employe-profile"}><LockIcon size={30} style={{fill: "#ff3366"}}  />Lock Screen</Link></li>
+                                                                <li className="parent"><Link to={"/logOut"}><LogoutIcon size={30} style={{fill: "#ff3366"}} />logout</Link></li>
+                                                             </ul>)   
                             }                                
                             </li>
                             </>)

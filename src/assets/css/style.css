@@ -3166,7 +3166,7 @@ a:hover {
 }
 .job_filter_sidebar_heading{
 	padding:18px 25px;
-	background:#ff3366;
+	background:#979797;
 }
 .job_filter_sidebar_heading h1{
 	color:#fff;
@@ -7424,7 +7424,7 @@ background:#fff;
 }
 .job_filter_sidebar_heading{
 	padding:18px 25px;
-	background:#ff3366;
+	background:#979797;
 }
 .job_overview_header{
 	padding:25px;
@@ -9525,4 +9525,10 @@ background:#fff;
 .company-logo-set{
     padding-left: 0px;
     padding-top: 0px;
+}
+.error-alert{
+    color: red !important;
+    float: left;
+    font-size: 11px !important;
+    font-family: monospace;
 }

@@ -1,4 +1,5 @@
 import React, {useState}  from "react";
+import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { EmployeSignIn } from '../../store/action/LoginAction';
@@ -14,6 +15,8 @@ const EmployeeSignIn = () =>{
 
     const dispatch = useDispatch()
 
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
     const selector = useSelector(state => state.LoginReducer);   
 
     const [formData,setFormData] = useState({
@@ -27,13 +30,12 @@ const EmployeeSignIn = () =>{
 
     const onChange = e =>setFormData({ ...formData,[e.target.name] : e.target.value });
 
-    const onSubmit= async e =>{
-        e.preventDefault();       
-        dispatch(EmployeSignIn(name, mobileNo,password , history))       
+    const onSubmit = data => {        
 
+        dispatch(EmployeSignIn(name, mobileNo,password , history))      
     };   
 
-    return(<>     
+return(<>     
    <Header2 />
     <div class="page_title_section">
         <div class="page_header">
@@ -78,20 +80,22 @@ const EmployeeSignIn = () =>{
                         </div>
                         <div class="login_form_wrapper signup_wrapper">
                             <h2>sign up</h2>
-                            <form className="form" onSubmit={ e=>onSubmit(e) }>
-							   <div class="form-group icon_form comments_form">
-
-                                <input type="text" class="form-control require" name="name"  id="name" value={name} onChange={ e=>onChange(e) } placeholder="Full Name*" />
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="form-group icon_form comments_form">
-                                <input type="text" class="form-control require" name="mobileNo"  id="mobileNo" value={mobileNo} onChange={ e=>onChange(e) } placeholder="Mobile No*" />
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="form-group icon_form comments_form">
-                                <input type="password" class="form-control require" name="password" id="password" value={password} onChange={ e=>onChange(e) } placeholder="Password *" />
-                                <i class="fas fa-lock"></i>
-                            </div>
+                            <form className="form" onSubmit={handleSubmit(onSubmit)} >
+                                {  errors?.name && <label class="control-label error-alert" for="inputError">Please Fill Valid Name</label> }
+                                <div class="form-group icon_form comments_form">
+                                    <input type="text" class="form-control require" name="name" id="name" {...register("name", {required: true, minLength: 3, maxLength: 40,})} value={name} onChange={ e=>onChange(e) } placeholder="Name*" />
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                {  errors?.mobileNo && <label class="control-label error-alert" for="inputError">Please Fill Valid Mobile No</label> }
+                                <div class="form-group icon_form comments_form">
+                                    <input type="text" class="form-control require" name="mobileNo" id="mobileNo"  {...register("mobileNo", {required: true, minLength: 10, maxLength: 10,})} value={mobileNo} onChange={ e=>onChange(e) } placeholder="Mobile No*" />
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                {  errors?.password && <label class="control-label error-alert" for="inputError">Please Fill Valid Password</label> }
+                                <div class="form-group icon_form comments_form">
+                                    <input type="password" class="form-control require" name="password" id="password" {...register("password", {required: true, minLength: 6 })} value={password} onChange={ e=>onChange(e) } placeholder="Password *" />
+                                    <i class="fas fa-lock"></i>
+                                </div>
                             <div class="login_remember_box">
                                 <label class="control control--checkbox">Remember me
                                     <input type="checkbox" />
@@ -116,9 +120,6 @@ const EmployeeSignIn = () =>{
     </div>   
    <Footer />
     </>)
-
-
-
 }
 
 export default EmployeeSignIn

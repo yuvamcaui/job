@@ -1,9 +1,54 @@
-import React from "react";
+import React,{ useState } from "react";
+import { useDispatch,useSelector } from 'react-redux';
+import { getTokenLocalUserStorage , getTokenLocalStorage, Url , userLoginData} from '../../../utils/Common';
+import { JobPostUpdate } from "../../../store/action/JobAction";
 
 const PostJob = () =>{
 
+    const dispatch = useDispatch();
+
+    const [ localStorage,setLocalStorage ] = useState(getTokenLocalUserStorage())
+
+    const [formData,setFormData] = useState({
+        companyId: localStorage?._Id ? localStorage?._Id : '1',
+        titleKey: 'En',
+        titleName: '',
+        jobCategoryId: '',
+        jobTypeId: '',
+        descriptionKey: 'En',
+        descriptionName: '',
+        noOfPositions: '',
+        activeFromDate:'',
+        activeToDate:'',
+        experienceYear:'',
+        genderId: '',
+        salaryFrom: '',
+        salaryTo: '',
+        location: '',
+        countryId: '',
+        stateId: '',
+        cityId: '',
+        pinCode: '',
+        status: true,
+        expiryDate: '',
+        isActive: '',
+        insertDateTime: '',
+    })
+
+    const { companyId,titleKey,titleName,experienceYear,activeFromDate ,activeToDate,jobCategoryId,jobTypeId,descriptionKey,descriptionName,noOfPositions,genderId,salaryFrom,salaryTo,location,countryId,stateId,cityId,pinCode,status,expiryDate,isActive,insertDateTime } = formData
+
+    const onChange = e =>setFormData({ ...formData,[e.target.name] : e.target.value });
+
+    const onSubmit= async e =>{
+        e.preventDefault(); 
+        console.log(`Form Data Triggers - ${ JSON.stringify(formData) }`)
+         dispatch(JobPostUpdate(formData));    
+
+    }; 
+
     return(<>
                 <div className="col-lg-12 col-md-12 col-sm-12 col-12">
+                <form className="form"  enctype="multipart/form-data" onSubmit={ e=>onSubmit(e) }>
                     <div className="row">
                         <div className="col-lg-12 col-md-12 col-sm-12 col-12">
                             <div className="col-lg-12 col-md-12 col-sm-12 col-12">
@@ -16,10 +61,10 @@ const PostJob = () =>{
                                             <div className="col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div className="select_box_form">
                                                     <label>Job Category</label>
-                                                    <select className='select-style-data' id="countryId" name='countryId' >
-                                                        <option>Accountant</option>
-                                                        <option>Shop Keeper</option>
-                                                        <option>Marketing Executive</option>                                                                                     
+                                                    <select className='select-style-data' id="jobCategoryId" name='jobCategoryId' value={jobCategoryId}  onChange={ e=>onChange(e) }>
+                                                        <option value={1}>Accountant</option>
+                                                        <option value={2}>Shop Keeper</option>
+                                                        <option value={3}>Marketing Executive</option>                                                                                     
                                                     </select>
                                                 </div>
                                             </div>
@@ -27,11 +72,11 @@ const PostJob = () =>{
                                             <div className="col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div className="select_box_form">
                                                     <label>Job Type</label>
-                                                    <select className='select-style-data' id="countryId" name='countryId' >
-                                                        <option>full time</option>
-                                                        <option>part time</option>
-                                                        <option> temperory</option>
-                                                        <option>freelance</option>                                                                                   
+                                                    <select className='select-style-data' id="jobTypeId" name='jobTypeId' value={jobTypeId}  onChange={ e=>onChange(e) } >
+                                                        <option value={1}>full time</option>
+                                                        <option value={2}>part time</option>
+                                                        <option value={3}> temperory</option>
+                                                        <option value={4}>freelance</option>                                                                                   
                                                     </select>
                                                 </div>
                                             </div>     
@@ -39,31 +84,31 @@ const PostJob = () =>{
                                             <div className="col-lg-12 col-md-12 col-sm-12 col-12">
                                                 <div className="contect_form3">
                                                     <label>job title</label>
-                                                    <input type="text" name="name"  />
+                                                    <input type="text" id="titleName" name='titleName' value={titleName}  onChange={ e=>onChange(e) }  />
                                                 </div>
                                             </div>
                                             
                                             <div className="col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div className="contect_form3">
                                                     <label>Minimum Salary</label>
-                                                    <input type="text" name="name" />
+                                                    <input type="text" id="salaryFrom" name='salaryFrom' value={salaryFrom}  onChange={ e=>onChange(e) } />
                                                 </div>
                                             </div>
                                             <div className="col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div className="contect_form3">
                                                     <label>Maximum Salary</label>
-                                                    <input type="text" name="name" />
+                                                    <input type="text" id="salaryTo" name='salaryTo' value={salaryTo}  onChange={ e=>onChange(e) } />
                                                 </div>
                                             </div>
 
                                             <div className="col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div className="select_box_form">
-                                                    <label>Job Type</label>
-                                                    <select className='select-style-data' id="countryId" name='countryId' >
-                                                        <option>1 year</option>
-                                                        <option>2 years</option>
-                                                        <option>3 years</option>
-                                                        <option>4 years</option>                                                                              
+                                                    <label>Experience Year</label>
+                                                    <select className='select-style-data' id="experienceYear" name='experienceYear' value={experienceYear}  onChange={ e=>onChange(e) } >
+                                                        <option value={1}>1 year</option>
+                                                        <option value={2}>2 years</option>
+                                                        <option value={3}>3 years</option>
+                                                        <option value={4}>4 years</option>                                                                              
                                                     </select>
                                                 </div>
                                             </div>    
@@ -71,26 +116,26 @@ const PostJob = () =>{
                                             <div className="col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div className="contect_form3">
                                                     <label>No Of Positions</label>
-                                                    <input type="text" name="name" />
+                                                    <input type="text" id="noOfPositions" name='noOfPositions' value={noOfPositions}  onChange={ e=>onChange(e) } />
                                                 </div>
                                             </div>
                                             <div className="col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div className="contect_form3">
                                                     <label>Active From</label>
-                                                    <input type="date" name="name" />
+                                                    <input type="date" id="activeFromDate" name='activeFromDate' value={activeFromDate}  onChange={ e=>onChange(e) } />
                                                 </div>
                                             </div>
                                             <div className="col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div className="contect_form3">
                                                     <label>Active Upto</label>
-                                                    <input type="date" name="name" />
+                                                    <input type="date" id="activeToDate" name='activeToDate' value={activeToDate}  onChange={ e=>onChange(e) } />
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-12 col-md-12 col-sm-12 col-12">
+                            {/* <div className="col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div className="job_filter_category_sidebar jb_cover">
                                     <div className="job_filter_sidebar_heading jb_cover">
                                         <h1> about this job</h1>
@@ -154,7 +199,7 @@ const PostJob = () =>{
     
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div className="job_filter_category_sidebar jb_cover">
                                     <div className="job_filter_sidebar_heading jb_cover">
@@ -163,19 +208,29 @@ const PostJob = () =>{
                                     <div className="col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div className="contect_form3">
                                             <label>Location (Comma Seperated)</label>
-                                            <input type="text" name="name"  />
+                                            <input type="text" id="location" name='location' value={location}  onChange={ e=>onChange(e) }  />
                                         </div>
                                     </div>
                                     <div className="col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div className="contect_form3">
                                             <label>Tags (Comma Seperated)</label>
-                                            <input type="text" name="name" />
+                                            <input type="text" id="descriptionName" name='descriptionName' value={descriptionName}  onChange={ e=>onChange(e) } />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <div class="login_remember_box jb_cover">
+                                                <div class="header_btn search_btn jb_cover">
+                                                    <input type="submit" className="btn btn-info" value="Insert" />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>  
+                    </form>
                 </div>
     
     </>)
