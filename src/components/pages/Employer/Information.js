@@ -1,5 +1,5 @@
 import React from "react";
-
+import Chart from "./Chart";
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import FeedIcon from '@mui/icons-material/Feed';
@@ -21,6 +21,9 @@ const Information = ({ formData }) =>{
                         <div className="row">
                            <div className="col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div className="row">
+                                    <div className="col-lg-12 col-md-12 col-sm-12">
+                                        <Chart />
+                                    </div>                                   
                                     <div className="col-lg-6 col-md-12 col-sm-12 col-12">
                                         <div className="emp_job_post jb_cover">
                                             <div className="emp_job_side_img">
@@ -42,7 +45,7 @@ const Information = ({ formData }) =>{
                                                 <p>total applications</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>                                  
                                     <div className="col-lg-6 col-md-12 col-sm-12 col-12">
                                         <div className="emp_job_post jb_cover">
                                             <div className="emp_job_side_img ress">
@@ -77,7 +80,7 @@ const Information = ({ formData }) =>{
                                                     <div className="col-lg-6 col-md-12 col-sm-12 col-12">
                                                         <div className="jp_listing_overview_list_main_wrapper jb_cover">
                                                             <div className="jp_listing_list_icon">
-                                                               <CalendarTodayIcon size={10}  style={{fill: "#ff3366"}} />
+                                                               <CalendarTodayIcon size={10}  style={{fill: "#979797"}} />
                                                             </div>
                                                             <div className="jp_listing_list_icon_cont_wrapper">
                                                                 <ul>
@@ -88,7 +91,7 @@ const Information = ({ formData }) =>{
                                                         </div>
                                                         <div className="jp_listing_overview_list_main_wrapper jb_cover">
                                                             <div className="jp_listing_list_icon">
-                                                                <CalendarTodayIcon size={10}  style={{fill: "#ff3366"}} />
+                                                                <CalendarTodayIcon size={10}  style={{fill: "#979797"}} />
                                                             </div>
                                                             <div className="jp_listing_list_icon_cont_wrapper">
                                                                 <ul>
@@ -99,7 +102,7 @@ const Information = ({ formData }) =>{
                                                         </div>
                                                         <div className="jp_listing_overview_list_main_wrapper jb_cover">
                                                             <div className="jp_listing_list_icon">
-                                                                <AddLocationIcon size={10}  style={{fill: "#ff3366"}} />
+                                                                <AddLocationIcon size={10}  style={{fill: "#979797"}} />
                                                             </div>
                                                             <div className="jp_listing_list_icon_cont_wrapper">
                                                                 <ul>
@@ -110,7 +113,7 @@ const Information = ({ formData }) =>{
                                                         </div>
                                                         <div className="jp_listing_overview_list_main_wrapper jb_cover">
                                                             <div className="jp_listing_list_icon">
-                                                                <SendToMobileIcon size={10}  style={{fill: "#ff3366"}} />
+                                                                <SendToMobileIcon size={10}  style={{fill: "#979797"}} />
                                                             </div>
                                                             <div className="jp_listing_list_icon_cont_wrapper">
                                                                 <ul>
@@ -123,7 +126,7 @@ const Information = ({ formData }) =>{
                                                     <div className="col-lg-6 col-md-12 col-sm-12 col-12">
                                                         <div className="jp_listing_overview_list_main_wrapper jb_cover">
                                                             <div className="jp_listing_list_icon">
-                                                                <MailIcon size={10}  style={{fill: "#ff3366"}} />
+                                                                <MailIcon size={10}  style={{fill: "#979797"}} />
                                                             </div>
                                                             <div className="jp_listing_list_icon_cont_wrapper">
                                                                 <ul>
@@ -134,7 +137,7 @@ const Information = ({ formData }) =>{
                                                         </div>
                                                         <div className="jp_listing_overview_list_main_wrapper jb_cover">
                                                             <div className="jp_listing_list_icon">
-                                                                <PersonIcon size={10}  style={{fill: "#ff3366"}} />
+                                                                <PersonIcon size={10}  style={{fill: "#979797"}} />
                                                             </div>
                                                             <div className="jp_listing_list_icon_cont_wrapper">
                                                                 <ul>
@@ -145,7 +148,7 @@ const Information = ({ formData }) =>{
                                                         </div>
                                                         <div className="jp_listing_overview_list_main_wrapper  jb_cover">
                                                             <div className="jp_listing_list_icon">
-                                                                <LanguageIcon size={10}  style={{fill: "#ff3366"}} />
+                                                                <LanguageIcon size={10}  style={{fill: "#979797"}} />
                                                             </div>
                                                             <div className="jp_listing_list_icon_cont_wrapper">
                                                                 <ul>
@@ -156,7 +159,7 @@ const Information = ({ formData }) =>{
                                                         </div>
                                                         <div className="jp_listing_overview_list_main_wrapper jb_cover">
                                                             <div className="jp_listing_list_icon">
-                                                                <InfoIcon size={10}  style={{fill: "#ff3366"}} />
+                                                                <InfoIcon size={10}  style={{fill: "#979797"}} />
                                                             </div>
                                                             <div className="jp_listing_list_icon_cont_wrapper">
                                                                 <ul>

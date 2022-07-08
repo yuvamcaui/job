@@ -20,8 +20,8 @@ const AppliedJob = () =>{
                                             <h4><a href="#">Maintenance Manager</a></h4>
 
                                             <ul>
-                                                <li><LocalAtmIcon  size={50} style={{fill: "#ff3366"}} />&nbsp; ₹ 12,000 - 15,000 / Month</li>
-                                                <li><LocationOnIcon  size={ 50 } style={{fill: "#ff3366"}} />&nbsp; Coimbatore</li>
+                                                <li><LocalAtmIcon  size={50} style={{fill: "#979797"}} />&nbsp; ₹ 12,000 - 15,000 / Month</li>
+                                                <li><LocationOnIcon  size={ 50 } style={{fill: "#979797"}} />&nbsp; Coimbatore</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -54,8 +54,8 @@ const AppliedJob = () =>{
                                             <h4><a href="#">Maintenance Manager</a></h4>
 
                                             <ul>
-                                                <li><LocalAtmIcon  size={50} style={{fill: "#ff3366"}} />&nbsp; ₹ 12,000 - 15,000 / Month</li>
-                                                <li><LocationOnIcon  size={ 50 } style={{fill: "#ff3366"}} />&nbsp; Coimbatore</li>
+                                                <li><LocalAtmIcon  size={50} style={{fill: "#979797"}} />&nbsp; ₹ 12,000 - 15,000 / Month</li>
+                                                <li><LocationOnIcon  size={ 50 } style={{fill: "#979797"}} />&nbsp; Coimbatore</li>
                                             </ul>
                                         </div>
                                     </div>

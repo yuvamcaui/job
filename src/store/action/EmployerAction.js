@@ -12,8 +12,8 @@ export const EmployerProfileUpdate = ( formData) => async dispatch =>{
     // console.log(JSON.stringify(formData));
 
     const headers = {"x-auth-header" : `${token}`, 'content-type': 'multipart/form-data'}
-      
-    axios.put(`${Url}member/employer`,formData, { headers }).then((response)=>{
+            
+    axios.put(`${Url}member/employer`,formData, {headers}).then((response)=>{
         console.log(JSON.stringify(response.data))
         if(response.data){                 
             userLoginData(response?.data?.data)

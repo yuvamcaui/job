@@ -6,6 +6,7 @@ const appstore = require("../../../assets/images/Testinomial/appstore.png")
 const playstore = require("../../../assets/images/Testinomial/appstore.png")
 const Testimonial = () =>{
     return(<>
+          
             <div class="download_wrapper index3_download jb_cover">
                     <div class="container">
                         <div class="row">
@@ -23,13 +24,13 @@ const Testimonial = () =>{
                                     <div class="app_btn playstore_2 jb_cover">
                                         <img src={ appstore }></img>
                                         <img src={ playstore }></img>
-
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
             </div>
+          
             <div className="popular_wrapper jb_cover">     
                 <div className="container">
                     <div className="row">

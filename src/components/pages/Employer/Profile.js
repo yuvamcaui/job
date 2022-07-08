@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { useReactMediaRecorder } from "react-media-recorder";
 import { useDispatch,useSelector } from 'react-redux';
@@ -43,7 +44,7 @@ const Profile = () =>{
 
     const [formData, setFormData] = useState({
         _id:localData._id ? localData._id  : 2,
-        memberType: localData.memberType ? localData.memberType  : 1,
+        memberType: localData.memberType ? localData.memberType  : 2,
         name : localData.name ? localData.name  :  "",  
         companyName : localData.companyName ? localData.companyName  :  "",  
         mobileNo:localData.mobileNo ? localData.mobileNo  :  "",  
@@ -75,7 +76,7 @@ const Profile = () =>{
 
         let body   = new FormData();         
         body.append('_id', localData._id)
-        body.append('memberType', 1)
+        body.append('memberType', memberType)
         body.append('name', name)
         body.append('companyName', companyName)
         body.append('mobileNo', mobileNo)      
@@ -93,9 +94,9 @@ const Profile = () =>{
         body.append('address', address)
         body.append('pinCode ', pinCode)
         body.append('establishmentYear ', establishmentYear)
+        body.append('status ', true)
         body.append('latitude ', latitude)
-        body.append('longitude ', longitude)        
-        body.append('social', social ? social : "")
+        body.append('longitude ', longitude)   
         
         dispatch(EmployerProfileUpdate(body));    
     };  
@@ -193,7 +194,7 @@ const Profile = () =>{
                                                 <option value={150}>100-150</option>
                                                 <option value={300}>150-300</option>                                                                                  
                                             </select>
-                                        </div>Address
+                                        </div>
                                     </div>                                    
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="contect_form3">
@@ -269,7 +270,7 @@ const Profile = () =>{
                                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                                         <div class="contect_form3">
                                                         {  errors?.establishmentYear ? <label class="control-label error-alert" for="inputError">Please Fill Valid Establishment Year </label>  :      <label>Establishment Year</label> } 
-                                                            <input type="text" name="establishmentYear"  id='establishmentYear' {...register("establishmentYear", { minLength: 3})} />
+                                                            <input type="text" name="establishmentYear"  id='establishmentYear' {...register("establishmentYear", { minLength: 3})}  value={establishmentYear} onChange={ e=>onChange(e) } />
                                                         </div>
                                                     </div>   
                                             </div>

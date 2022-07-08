@@ -10,7 +10,7 @@ const PostJob = () =>{
     const [ localStorage,setLocalStorage ] = useState(getTokenLocalUserStorage())
 
     const [formData,setFormData] = useState({
-        companyId: localStorage?._Id ? localStorage?._Id : '1',
+        companyId: localStorage?._id ? localStorage?._id : '1',
         titleKey: 'En',
         titleName: '',
         jobCategoryId: '',
@@ -21,13 +21,13 @@ const PostJob = () =>{
         activeFromDate:'',
         activeToDate:'',
         experienceYear:'',
-        genderId: '',
+        genderId: 1,
         salaryFrom: '',
         salaryTo: '',
         location: '',
-        countryId: '',
-        stateId: '',
-        cityId: '',
+        countryId: 1,
+        stateId: 1,
+        cityId: 1,
         pinCode: '',
         status: true,
         expiryDate: '',

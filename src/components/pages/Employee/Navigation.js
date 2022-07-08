@@ -18,15 +18,15 @@ const Navigation = ({ activeScreeen, active, name }) =>{
                     </div>
                     <div className="emp_follow_link jb_cover">
                     <ul className="feedlist">
-                            <li onClick={ ()=>activeScreeen(1) }><Link to="#" className={ active === 1 && "link_active" }><DashboardIcon size={30} style={{fill: "#ff3366"}} /> DashBoard </Link></li>
+                            <li onClick={ ()=>activeScreeen(1) }><Link to="#" className={ active === 1 && "link_active" }><DashboardIcon size={30} style={{fill: "#979797"}} /> DashBoard </Link></li>
                             <li onClick={ ()=>activeScreeen(2) }>
-                                <Link to="#" className={ active === 2 && "link_active" }> <EditIcon  size={30} style={{fill: "#ff3366"}} />Profile
+                                <Link to="#" className={ active === 2 && "link_active" }> <EditIcon  size={30} style={{fill: "#979797"}} />Profile
                                 </Link>
                             </li>                           
-                            <li onClick={ ()=>activeScreeen(3) }><Link to="#" className={ active === 3 && "link_active" }> <CheckBoxIcon size={30}  style={{fill: "#ff3366"}}/> applied job</Link></li>
+                            <li onClick={ ()=>activeScreeen(3) }><Link to="#" className={ active === 3 && "link_active" }> <CheckBoxIcon size={30}  style={{fill: "#979797"}}/> applied job</Link></li>
                                         </ul>
                         <ul className="feedlist logout_link jb_cover">
-                            <li><Link to={"/logOut"}><LogoutIcon size={30} style={{fill: "#ff3366"}} /> log out  </Link></li>   
+                            <li><Link to={"/logOut"}><LogoutIcon size={30} style={{fill: "#979797"}} /> log out  </Link></li>   
                         </ul>
                     </div>
                 </div>

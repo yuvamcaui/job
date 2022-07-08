@@ -89,18 +89,18 @@ const Header2 =() =>{
                             {
                                 loginType?.memberType === 1 ? (<ul className="navi_2_dropdown">                               
                              
-                                                                <li className="parent"><Link to={"/employe-dashboard"}><PersonIcon size={30} style={{fill: "#ff3366"}} />Profile</Link></li>
-                                                                <li className="parent"><Link to={"/employe-profile"}><NotificationsNoneIcon size={30} style={{fill: "#ff3366"}} />Notifications</Link></li>                                            
-                                                                <li className="parent"><Link to={"/employe-profile"}><HelpOutlineIcon size={30} style={{fill: "#ff3366"}} />Help</Link></li>
-                                                                <li className="parent"><Link to={"/employe-profile"}><LockIcon size={30} style={{fill: "#ff3366"}}  />Lock Screen</Link></li>
-                                                                <li className="parent"><Link to={"/logOut"}><LogoutIcon size={30} style={{fill: "#ff3366"}} />logout</Link></li>
+                                                                <li className="parent"><Link to={"/employe-dashboard"}><PersonIcon size={30} style={{fill: "#979797"}} />Profile</Link></li>
+                                                                <li className="parent"><Link to={"/employe-profile"}><NotificationsNoneIcon size={30} style={{fill: "#979797"}} />Notifications</Link></li>                                            
+                                                                <li className="parent"><Link to={"/employe-profile"}><HelpOutlineIcon size={30} style={{fill: "#979797"}} />Help</Link></li>
+                                                                <li className="parent"><Link to={"/employe-profile"}><LockIcon size={30} style={{fill: "#979797"}}  />Lock Screen</Link></li>
+                                                                <li className="parent"><Link to={"/logOut"}><LogoutIcon size={30} style={{fill: "#979797"}} />logout</Link></li>
                                                              </ul>) : 
                                                              (<ul className="navi_2_dropdown">  
-                                                                <li className="parent"><Link to={"/employer-dashboard"}><PersonIcon size={30} style={{fill: "#ff3366"}} />Profile</Link></li>
-                                                                <li className="parent"><Link to={"/employe-profile"}><NotificationsNoneIcon  size={30} style={{fill: "#ff3366"}} />Notifications</Link></li>                                            
-                                                                <li className="parent"><Link to={"/employe-profile"}><HelpOutlineIcon size={30} style={{fill: "#ff3366"}} />Help</Link></li>
-                                                                <li className="parent"><Link to={"/employe-profile"}><LockIcon size={30} style={{fill: "#ff3366"}}  />Lock Screen</Link></li>
-                                                                <li className="parent"><Link to={"/logOut"}><LogoutIcon size={30} style={{fill: "#ff3366"}} />logout</Link></li>
+                                                                <li className="parent"><Link to={"/employer-dashboard"}><PersonIcon size={30} style={{fill: "#979797"}} />Profile</Link></li>
+                                                                <li className="parent"><Link to={"/employe-profile"}><NotificationsNoneIcon  size={30} style={{fill: "#979797"}} />Notifications</Link></li>                                            
+                                                                <li className="parent"><Link to={"/employe-profile"}><HelpOutlineIcon size={30} style={{fill: "#979797"}} />Help</Link></li>
+                                                                <li className="parent"><Link to={"/employe-profile"}><LockIcon size={30} style={{fill: "#979797"}}  />Lock Screen</Link></li>
+                                                                <li className="parent"><Link to={"/logOut"}><LogoutIcon size={30} style={{fill: "#979797"}} />logout</Link></li>
                                                              </ul>)   
                             }                                
                             </li>

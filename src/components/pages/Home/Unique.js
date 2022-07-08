@@ -1,4 +1,7 @@
 import React from 'react';
+import { Parallax } from 'react-parallax';
+import "animate.css"
+
 const c1 = require("../../../assets/images/unique/c1.png");
 const c2 = require("../../../assets/images/unique/c2.png");
 const c3 = require("../../../assets/images/unique/c3.png");
@@ -24,42 +27,42 @@ const Unique = () =>{
                 </div>
                 <div className='col-xs-12 col-sm-12 col-md-4 col-lg-4'>
                         <div className="services_content jb_cover">
-                                <img src={ c4 } alt="img" />
-                                <h3><a href="#">Compliance Reporting</a></h3>
-                                <p>Create jobs, allocate to technicians, track time & materials to determine job profitability </p>
+                                <img src={ c4 } alt="img" className="animate__animated animate__bounce" />
+                                <h3 className="animate__animated animate__bounce"><a href="#">Compliance Reporting</a></h3>
+                                <p className="animate__animated animate__bounce">Create jobs, allocate to technicians, track time & materials to determine job profitability </p>
                         </div>
 
                         <div className="services_content jb_cover">
-                                <img src={ c4 } alt="img" />
-                                <h3><a href="#">Compliance Reporting</a></h3>
-                                <p>Create jobs, allocate to technicians, track time & materials to determine job profitability </p>
+                                <img src={ c4 } alt="img" className="animate__animated animate__bounce" />
+                                <h3 className="animate__animated animate__bounce"><a href="#">Compliance Reporting</a></h3>
+                                <p className="animate__animated animate__bounce">Create jobs, allocate to technicians, track time & materials to determine job profitability </p>
                         </div>
 
                         <div className="services_content jb_cover">
-                                    <img src={ c9 } alt="img" />
-                                    <h3><a href="#">customer portal</a></h3>
-                                    <p>Create jobs, allocate to technicians, track time & materials to determine job profitability </p>            
+                                    <img src={ c9 } alt="img" className="animate__animated animate__bounce" />
+                                    <h3 className="animate__animated animate__bounce"><a href="#">customer portal</a></h3>
+                                    <p className="animate__animated animate__bounce"> Create jobs, allocate to technicians, track time & materials to determine job profitability </p>            
                         </div>
 
                 </div>
                 <div className='col-xs-12 col-sm-12 col-md-4 col-lg-4'>
-                    <img src={ Screen } alt="img" height="40%" />
+                    <img className="animate__animated animate__bounce" src={ Screen } alt="img" height="40%" />
                 </div>
                 <div className='col-xs-12 col-sm-12 col-md-4 col-lg-4'>
                         <div className="services_content jb_cover">
-                            <img src={ c3 } alt="img" />
-                            <h3><a href="#">customer portal</a></h3>
-                            <p>Create jobs, allocate to technicians, track time & materials to determine job profitability </p>            
+                            <img src={ c3 } alt="img" className="animate__animated animate__bounce" />
+                            <h3 className="animate__animated animate__bounce"><a href="#">customer portal</a></h3>
+                            <p className="animate__animated animate__bounce">Create jobs, allocate to technicians, track time & materials to determine job profitability </p>            
                         </div>
                         <div className="services_content jb_cover">
-                            <img src={ c6 } alt="img" />
-                            <h3><a href="#">customer portal</a></h3>
-                            <p>Create jobs, allocate to technicians, track time & materials to determine job profitability </p>            
+                            <img src={ c6 } alt="img" className="animate__animated animate__bounce" />
+                            <h3 className="animate__animated animate__bounce"><a href="#">customer portal</a></h3>
+                            <p className="animate__animated animate__bounce">Create jobs, allocate to technicians, track time & materials to determine job profitability </p>            
                         </div>
                         <div className="services_content jb_cover">
-                            <img src={ c9 } alt="img" />
-                            <h3><a href="#">customer portal</a></h3>
-                            <p>Create jobs, allocate to technicians, track time & materials to determine job profitability </p>            
+                            <img src={ c9 } alt="img" className="animate__animated animate__bounce" />
+                            <h3 className="animate__animated animate__bounce"><a href="#">customer portal</a></h3>
+                            <p className="animate__animated animate__bounce">Create jobs, allocate to technicians, track time & materials to determine job profitability </p>            
                         </div>
                 </div>               
             </div>

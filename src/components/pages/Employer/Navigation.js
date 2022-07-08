@@ -21,23 +21,30 @@ const Navigation = ({ activeScreeen, active, name }) =>{
                     </div>
                     <div className="emp_follow_link jb_cover">
                     <ul className="feedlist">
-                            <li onClick={ ()=>activeScreeen(1) }><Link to="#" className={ active === 1 && "link_active" }><DashboardIcon size={30} style={{fill: "#ff3366"}} /> DashBoard </Link></li>
-                            <li onClick={ ()=>activeScreeen(2) }>
-                                <Link to="#" className={ active === 2 && "link_active" }> <EditIcon  size={30} style={{fill: "#ff3366"}} />Profile
-                                </Link>
-                            </li>                           
+                            <li onClick={ ()=>activeScreeen(1) }><Link to="#" className={ active === 1 && "link_active" }><DashboardIcon size={30} style={{fill: "#979797"}} /> DashBoard </Link></li>
+                                                   
+                            <li onClick={ ()=>activeScreeen(6) }><Link to="#" className={ active === 6 && "link_active" }>
+                                     <GroupAddIcon size={30}  style={{fill: "#979797"}}/> Feeds</Link>
+                            </li>
+                            <li onClick={ ()=>activeScreeen(7) }><Link to="#" className={ active === 7 && "link_active" }>
+                                     <GroupAddIcon size={30}  style={{fill: "#979797"}}/> Connection</Link>
+                            </li>
                             <li onClick={ ()=>activeScreeen(3) }><Link to="#" className={ active === 3 && "link_active" }>
-                                     <GroupAddIcon size={30}  style={{fill: "#ff3366"}}/> Post New Jobs</Link>
+                                     <GroupAddIcon size={30}  style={{fill: "#979797"}}/> Post New Jobs</Link>
                             </li>
                             <li onClick={ ()=>activeScreeen(4) }><Link to="#" className={ active === 4 && "link_active" }>
-                                     <WorkIcon size={30}  style={{fill: "#ff3366"}}/> Manage Jobs</Link>
+                                     <WorkIcon size={30}  style={{fill: "#979797"}}/> Manage Jobs</Link>
                             </li>
                             <li onClick={ ()=>activeScreeen(5) }><Link to="#" className={ active === 5 && "link_active" }>
-                                     <BusinessCenterIcon size={30}  style={{fill: "#ff3366"}}/> Application</Link>
+                                     <BusinessCenterIcon size={30}  style={{fill: "#979797"}}/> Application</Link>
                             </li>
-                                        </ul>
+                            <li onClick={ ()=>activeScreeen(2) }>
+                                <Link to="#" className={ active === 2 && "link_active" }> <EditIcon  size={30} style={{fill: "#979797"}} />Profile
+                                </Link>
+                            </li>   
+                    </ul>
                         <ul className="feedlist logout_link jb_cover">
-                            <li><Link to={"/logOut"}><LogoutIcon size={30} style={{fill: "#ff3366"}} /> log out  </Link></li>   
+                            <li><Link to={"/logOut"}><LogoutIcon size={30} style={{fill: "#979797"}} /> log out  </Link></li>   
                         </ul>
                     </div>
                 </div>
