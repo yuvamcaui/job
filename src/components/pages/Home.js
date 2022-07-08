@@ -11,7 +11,7 @@ const Home = () =>{
         <Header2 />
             <Scroller />
             {/* <Search /> */}
-            <Service />
+            {/* <Service /> */}
             <Explor />
         <Footer />
     </div>)
